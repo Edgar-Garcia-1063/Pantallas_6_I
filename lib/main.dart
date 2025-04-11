@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:garciarutas/pinicial.dart';
 import 'package:garciarutas/pagina2.dart';
 import 'package:garciarutas/pagina3.dart';
+import 'package:garciarutas/pagina4.dart';
+import 'package:garciarutas/pagina5.dart'; // Asegúrate de importar las pantallas nuevas
+import 'package:garciarutas/pagina6.dart';
+import 'package:garciarutas/pagina7.dart';
 
 void main() => runApp(MiRutas());
 
@@ -16,11 +20,18 @@ class MiRutas extends StatelessWidget {
       title: 'Rutas Entre Paginas',
       initialRoute: '/',
       routes: {
-        // When navigating to the "/" route, build the FirstScreen widget.
+        // Cuando navegues a la ruta "/" se construye la Pantalla Uno
         '/': (context) => const PantallaUno(),
-        // When navigating to the "/second" route, build the SecondScreen widget.
+
+        // Rutas para las pantallas existentes
         '/pantalla2': (context) => const PantallaDos(),
         '/pantalla3': (context) => const PantallaTres(),
+        '/pantalla4': (context) => const PantallaCuatro(),
+
+        // Rutas para las pantallas nuevas
+        '/pantalla5': (context) => const PantallaCinco(),
+        '/pantalla6': (context) => const PantallaSeis(),
+        '/pantalla7': (context) => const PantallaSiete(),
       },
     );
   }

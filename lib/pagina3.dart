@@ -1,29 +1,68 @@
 import 'package:flutter/material.dart';
 
-class PantallaTres extends StatelessWidget {
+class PantallaTres extends StatefulWidget {
   const PantallaTres({Key? key}) : super(key: key);
+
+  @override
+  State<PantallaTres> createState() => _PantallaTresState();
+}
+
+class _PantallaTresState extends State<PantallaTres> {
+  int _counter = 0;
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff368c57), // Fondo azul
+        backgroundColor: const Color(0xff368c57),
         title: const Text(
-          'Pantalla Tres 3',
+          'Pantalla Tres',
           style: TextStyle(
-            color: Colors.black, // Letra blanca
-            fontSize: 20.0, // Tamaño de la letra 20
+            color: Colors.black,
+            fontSize: 20.0,
           ),
         ),
-        centerTitle: true, // Centrar el texto
+        centerTitle: true,
       ),
-      body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text('Pantalla Inicial '),
-        ),
+      body: Column(
+        children: [
+          const SizedBox(height: 20),
+
+          // AnimatedAlign + Gesture
+          GestureDetector(
+            onTap: () {
+              setState(() {
+                selected = !selected;
+              });
+            },
+            child: Container(
+              width: double.infinity,
+              height: 250.0,
+              color: Colors.blueGrey,
+              child: AnimatedAlign(
+                alignment: selected ? Alignment.topRight : Alignment.bottomLeft,
+                duration: const Duration(seconds: 1),
+                curve: Curves.fastOutSlowIn,
+                child: const FlutterLogo(size: 50.0),
+              ),
+            ),
+          ),
+
+          const SizedBox(height: 20),
+
+          const SizedBox(height: 30),
+
+          // Botón para volver
+          Center(
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: const Text('Pantalla Inicial'),
+            ),
+          ),
+        ],
       ),
     );
   }
